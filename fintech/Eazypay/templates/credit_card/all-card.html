@@ -1,0 +1,31 @@
+{% extends 'partials/dashboard-base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content  %}
+
+    <!-- Dashboard Section start -->
+   <!DOCTYPE html>
+<html>
+<head>
+    <title>All Credit Cards</title>
+</head>
+<body>
+    <h1>Account Details</h1>
+    <p>Account Owner: {{ account.user.username }}</p>
+    <p>Account Balance: {{ account.balance }}</p>
+
+    <h2>Credit Cards</h2>
+    {% if credit_card %}
+        <ul>
+            {% for card in credit_card %}
+                <li>Card Number: {{ card.card_number }} - Expiry Date: {{ card.expiration_date }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No credit cards available.</p>
+    {% endif %}
+</body>
+</html>
+
+<!-- Add Card Popup start -->
+{% endblock content %}
